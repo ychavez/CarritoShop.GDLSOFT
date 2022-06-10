@@ -1,5 +1,8 @@
 
 
+using CarritoShop.Infraestructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+
 namespace CarritoShop
 {
     public class Program
@@ -14,6 +17,10 @@ namespace CarritoShop
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<CarritoDbContext>(o =>
+            o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+            );
             
        
 
